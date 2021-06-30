@@ -1,3 +1,14 @@
 html{
     scroll-behavior: smooth;
 }
+
+.bg-purple{
+    background-color: #C19AB2;
+}
+
+.fs-54{
+    font-size: 54pt;
+}
+.fs-18{
+    font-size: 18pt;
+}
