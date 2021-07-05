@@ -67,8 +67,10 @@
         <div class="form-group">
             <label for="titulo">Escolha um tema ou <a data-dismiss="modal" routerLink='/tema'>Cadastre um novo</a>:</label>
             <select name="tema" id="tema"  class="form-control" >
-            <option value="">Temas</option>
-        </select>
+            <option value="{{i.id}}" *ngFor='let i of listaTemas'>{{i.descricao}}</option>
+                
+          
+            </select>
         </div>
         </div>
         <div class="modal-footer">

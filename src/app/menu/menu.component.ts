@@ -12,10 +12,12 @@ export class MenuComponent implements OnInit {
   nome = environment.nome
   foto = environment.foto
   token = environment.token
+
   constructor(
     private router : Router
   ) { }
 
+  //TODO: Rever a hora para atualizar constante
   ngOnInit(){
   }
 
