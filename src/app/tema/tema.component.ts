@@ -22,6 +22,7 @@ export class TemaComponent implements OnInit {
     if (environment.token == '') {
       this.router.navigate(['/entrar'])
     }
+    this.temaService.refreshToken()
     this.findAllTemas()
   }
 
