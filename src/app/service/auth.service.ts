@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.prod';
@@ -10,16 +10,23 @@ import { UserLogin } from '../model/UserLogin';
 })
 export class AuthService {
 
-  constructor( 
+  constructor(
     private http: HttpClient
     ) { }
-  
+
     entrar(userLogin: UserLogin ): Observable<UserLogin>{
       return this.http.post<UserLogin>('https://blogpessoalnathalia.herokuapp.com/usuarios/logar', userLogin)
   }
   cadastrar(user : User): Observable<User>{
     return this.http.post<User>('https://blogpessoalnathalia.herokuapp.com/usuarios/cadastrar', user)
   }
+
+  getByIdUser(id: number): Observable<User>{
+
+      let params = new HttpParams().set('id', id.toString())
+      return this.http.get<User>(`https://blogpessoalnathalia.herokuapp.com/usuarios/buscar/id?${params}`)
+  }
+
   logado() {
     let ok = false
     if (environment.token != '') {
