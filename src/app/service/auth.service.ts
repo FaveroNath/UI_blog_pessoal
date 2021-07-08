@@ -22,9 +22,7 @@ export class AuthService {
   }
 
   getByIdUser(id: number): Observable<User>{
-
-      let params = new HttpParams().set('id', id.toString())
-      return this.http.get<User>(`https://blogpessoalnathalia.herokuapp.com/usuarios/buscar/id?${params}`)
+      return this.http.get<User>(`https://blogpessoalnathalia.herokuapp.com/usuarios/buscar/${id}`)
   }
 
   logado() {
