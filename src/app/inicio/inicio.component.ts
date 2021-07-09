@@ -34,9 +34,9 @@ export class InicioComponent implements OnInit {
       alert('Sua seção expirou, faça login novamente!')
       this.router.navigate(['entrar'])
     }
-    //this.temaService.refreshToken()
     this.findAllTemas()
     this.findAllPostagens()
+    this.findByUser()
   }
 
 
@@ -65,7 +65,9 @@ export class InicioComponent implements OnInit {
   }
 
   findByUser(){
-    this.authService.getByIdUser(this.idUser).subscribe((resp: User)=>{
+    console.log(this.idUser)
+    this.temaService.refreshToken()
+    this.temaService.getByIdUser(this.idUser).subscribe((resp: User)=>{
       this.user = resp
       console.log(this.idUser)
     })

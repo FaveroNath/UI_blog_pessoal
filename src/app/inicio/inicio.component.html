@@ -25,7 +25,7 @@
 
             <a class="nav-item nav-link active text-secondary font-weight-bold" id="nav-home-tab" data-toggle="tab" href="#todasPostagens" role="tab" aria-controls="nav-todasPostagens" aria-selected="true" (click)='findAllPostagens()'>Todas as Postagens</a>
 
-          <a  (click)='findByUser()' class="nav-item nav-link text-secondary font-weight-bold" id="nav-minhasPostagens-tab" data-toggle="tab" href="#minhasPostagens" role="tab" aria-controls="nav-minhasPostagens" aria-selected="false">Minhas Postagens</a>
+          <a class="nav-item nav-link text-secondary font-weight-bold" id="nav-minhasPostagens-tab" data-toggle="tab" href="#minhasPostagens" role="tab" aria-controls="nav-minhasPostagens" aria-selected="false">Minhas Postagens</a>
 
           <a class="nav-item nav-link text-secondary font-weight-bold" id="nav-temaPostagens-tab" data-toggle="tab" href="#temaPostagens" role="tab" aria-controls="nav-temaPostagens" aria-selected="false">Postagens por tema</a>
 
@@ -57,25 +57,26 @@
                 <p class="card-text">{{i.texto}}</p>
                 <p class="card-text"><small class="text-muted">{{i.date | date: 'dd/MM/yyyy'}} às
                   {{i.date | date: 'HH:mm'}}</small></p>
+                  <a [routerLink]="['/postagem-edit', i.id]" class="text-info mr-3" href="">Editar</a>
+                  <a [routerLink]="['/postagem-delete', i.id]" class="text-danger" href="">Apagar</a>
             </div>
           </div>
         </div>
-
-        <div class="tab-pane fade" id="temaPostagens" role="tabpanel" aria-labelledby="nav-temaPostagens-tab">
-          <div class="card-columns" *ngFor='let tema of listaTemas'>
-            <div class="card text-center" *ngFor = 'let i of tema.postagem '>
-              <div class="card-body">
-                <h5 class="card-title m-0">{{i.titulo}}</h5>
-                <p class="card-text">{{i.texto}}</p>
-                <p class="card-text"><small class="text-muted">{{i.date | date: 'dd/MM/yyyy'}} às
-                  {{i.date | date: 'HH:mm'}}</small></p>
-                <p class="card-text"><small class="text-muted">by: {{i.user.nome}}</small></p>
-              </div>
-            </div>
-          </div>
-        </div>
-
     </div>
+    <div class="tab-pane fade" id="temaPostagens" role="tabpanel" aria-labelledby="nav-temaPostagens-tab">
+      <div class="card-columns" *ngFor='let tema of listaTemas'>
+        <div class="card text-center" *ngFor = 'let i of tema.postagem '>
+          <div class="card-body">
+            <h5 class="card-title m-0">{{i.titulo}}</h5>
+            <p class="card-text">{{i.texto}}</p>
+            <p class="card-text"><small class="text-muted">{{i.date | date: 'dd/MM/yyyy'}} às
+              {{i.date | date: 'HH:mm'}}</small></p>
+            <p class="card-text"><small class="text-muted">by: {{i.user.nome}}</small></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
 </div>
 
 

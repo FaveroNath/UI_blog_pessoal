@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.prod';
 import { Tema } from '../model/Tema';
+import { User } from '../model/User';
 
 @Injectable({
   providedIn: 'root'
@@ -38,6 +39,12 @@ export class TemaService {
 
   putTema(tema: Tema, id: number): Observable<Tema>{
     return this.http.put<Tema>(`https://blogpessoalnathalia.herokuapp.com/tema/update/${id}`, tema, this.token)
+  }
+
+  getByIdUser(id: number): Observable<User>{
+    console.log(this.token)
+    console.log(environment.token)
+    return this.http.get<User>(`https://blogpessoalnathalia.herokuapp.com/usuarios/buscar/${id}`, this.token)
   }
 
   deleteTema(id: number) {
