@@ -13,10 +13,10 @@ export class CadastrarComponent implements OnInit {
   user: User = new User
   confirmarSenha: string
   tipoUsuario: string
-   
+
   constructor(
-    private authService: AuthService, 
-    private router: Router 
+    private authService: AuthService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -27,7 +27,7 @@ export class CadastrarComponent implements OnInit {
      this.confirmarSenha = event.target.value
   }
   tipoUser(event:any) {
-    this.tipoUsuario= event.target.value
+    this.tipoUsuario = event.target.value
   }
   cadastrar(){
     this.user.tipo = this.tipoUsuario
