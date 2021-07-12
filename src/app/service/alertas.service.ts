@@ -16,15 +16,15 @@ export class AlertasService {
     bsModalRef.content.message = message
   }
 
-  showAlertDanger(msg: string) {
-    this.showAlert(msg, 'Ddnger')
+  showAlertDanger(message: string) {
+    this.showAlert(message, 'danger')
   }
 
-  showAlertSuccess(msg: string) {
-    this.showAlert(msg, 'success')
+  showAlertSuccess(message: string) {
+    this.showAlert(message, 'success')
   }
 
-  showAertInfo(msg: string) {
-    this.showAlert(msg, 'info')
+  showAertInfo(message: string) {
+    this.showAlert(message, 'info')
   }
 }

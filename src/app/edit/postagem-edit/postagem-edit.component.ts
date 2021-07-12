@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Postagem } from 'src/app/model/Postagem';
 import { Tema } from 'src/app/model/Tema';
+import { AlertasService } from 'src/app/service/alertas.service';
 import { PostagemService } from 'src/app/service/postagem.service';
 import { TemaService } from 'src/app/service/tema.service';
 import { environment } from 'src/environments/environment.prod';
@@ -22,22 +23,23 @@ export class PostagemEditComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private postagemService: PostagemService,
-    private temaService: TemaService
+    private temaService: TemaService,
+    private alertasService: AlertasService
   ) { }
 
   ngOnInit(){
     window.scroll(0,0)
     if(environment.token == '') {
-      alert('Sua seção expirou, faça login novamente!')
+      this.alertasService.showAertInfo('Sua seção expirou, faça login novamente!')
       this.router.navigate(['entrar'])
     }
+
     let id = this.route.snapshot.params['id']
-    console.log(id)
     this.findByIdPostagem(id)
-    console.log(this.postagem)
     this.idPostagem = id
     this.findAllTemas()
   }
+
   findByIdPostagem(id: number) {
     this.postagemService.getIdPostagem(id).subscribe((resp: Postagem)=>{
       this.postagem = resp
@@ -56,10 +58,10 @@ export class PostagemEditComponent implements OnInit {
   atualizar() {
     this.tema.id = this.idTema
     this.postagem.tema = this.tema
-    console.log(this.idPostagem)
+
     this.postagemService.putPostagem(this.idPostagem ,this.postagem).subscribe((resp:Postagem)=>{
       this.postagem = resp
-      alert('Postagem atualizada com sucesso!')
+      this.alertasService.showAlertSuccess('Postagem atualizada com sucesso!')
       this.router.navigate(['/inicio'])
     })
   }

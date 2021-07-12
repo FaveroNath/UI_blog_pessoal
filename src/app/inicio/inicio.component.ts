@@ -38,7 +38,7 @@ export class InicioComponent implements OnInit {
 
   ngOnInit() {
     if(environment.token == '') {
-      alert('Sua seção expirou, faça login novamente!')
+      this.alertasService.showAertInfo('Sua seção expirou, faça login novamente!')
       this.router.navigate(['entrar'])
     }
     this.findAllTemas()
@@ -54,7 +54,6 @@ export class InicioComponent implements OnInit {
     })
   }
 
-
   findByIdTema() {
     this.temaService.getByIdTema(this.idTema).subscribe((resp: Tema)=>{
       this.tema = resp
@@ -64,10 +63,7 @@ export class InicioComponent implements OnInit {
   findAllPostagens() {
     //this.temaService.refreshToken()
     this.postagemService.getAllPostagens().subscribe((resp: Postagem[])=>{
-
-
       this.listaPostagens = resp
-      console.log(this.listaPostagens)
     })
   }
 
@@ -87,7 +83,6 @@ export class InicioComponent implements OnInit {
     this.user.id = this.idUser
     this.postagem.user = this.user
 
-    console.log(this.postagem)
     this.postagemService.postPostagem(this.postagem).subscribe((resp: Postagem)=>{
     this.postagem = resp
     this.alertasService.showAlertSuccess("Postagem realizada com sucesso")

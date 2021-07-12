@@ -14,12 +14,12 @@ export class MenuComponent implements OnInit {
   foto = environment.foto
   token = environment.token
   id = environment.id
+  
   constructor(
     private router : Router,
     public auth: AuthService
   ) { }
 
-  //TODO: Rever a hora para atualizar constante
   ngOnInit(){
   }
 
