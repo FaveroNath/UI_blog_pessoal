@@ -14,7 +14,7 @@ export class TemaComponent implements OnInit {
   listaTemas: Tema[]
   key = 'data'
   reverse = true
-  
+
   constructor(
     private router: Router,
     private temaService: TemaService
