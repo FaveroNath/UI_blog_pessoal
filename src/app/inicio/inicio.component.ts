@@ -30,6 +30,7 @@ export class InicioComponent implements OnInit {
   constructor(
     private router: Router,
     private temaService: TemaService,
+    public auth: AuthService,
     private userSerice: UserService,
     private postagemService: PostagemService,
     private alertasService: AlertasService

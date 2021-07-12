@@ -13,7 +13,7 @@ export class EntrarComponent implements OnInit {
  userLogin : UserLogin = new UserLogin
   constructor(
     private auth: AuthService,
-    private router: Router 
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -22,11 +22,12 @@ export class EntrarComponent implements OnInit {
 
   entrar() {
     this.auth.entrar(this.userLogin).subscribe((resp: UserLogin)=>{
-      this.userLogin = resp 
+      this.userLogin = resp
       environment.token = this.userLogin.token
       environment.nome = this.userLogin.nome
       environment.foto = this.userLogin.foto
       environment.id = this.userLogin.id
+      environment.tipo = this.userLogin.tipo
 
       this.router.navigate(['/inicio'])
     }, erro => {
