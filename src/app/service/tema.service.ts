@@ -41,12 +41,6 @@ export class TemaService {
     return this.http.put<Tema>(`https://blogpessoalnathalia.herokuapp.com/tema/update/${id}`, tema, this.token)
   }
 
-  getByIdUser(id: number): Observable<User>{
-    console.log(this.token)
-    console.log(environment.token)
-    return this.http.get<User>(`https://blogpessoalnathalia.herokuapp.com/usuarios/buscar/${id}`, this.token)
-  }
-
   deleteTema(id: number) {
     return this.http.delete(`https://blogpessoalnathalia.herokuapp.com/tema/delete/${id}`, this.token)
   }

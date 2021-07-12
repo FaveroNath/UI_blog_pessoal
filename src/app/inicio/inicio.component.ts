@@ -8,6 +8,7 @@ import { AlertasService } from '../service/alertas.service';
 import { AuthService } from '../service/auth.service';
 import { PostagemService } from '../service/postagem.service';
 import { TemaService } from '../service/tema.service';
+import { UserService } from '../service/user.service';
 
 @Component({
   selector: 'app-inicio',
@@ -22,10 +23,13 @@ export class InicioComponent implements OnInit {
   idTema: number
   user: User = new User()
   idUser = environment.id
+  key = 'data'
+  reverse = true
 
   constructor(
     private router: Router,
     private temaService: TemaService,
+    private userSerice: UserService,
     private postagemService: PostagemService,
     private alertasService: AlertasService
   ) { }
@@ -68,7 +72,7 @@ export class InicioComponent implements OnInit {
   findByUser(){
     console.log(this.idUser)
     this.temaService.refreshToken()
-    this.temaService.getByIdUser(this.idUser).subscribe((resp: User)=>{
+    this.userSerice.getByIdUser(this.idUser).subscribe((resp: User)=>{
       this.user = resp
       console.log(this.idUser)
     })

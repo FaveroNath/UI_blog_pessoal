@@ -20,7 +20,6 @@ export class UserEditComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private temaService: TemaService,
     private router: Router,
     private route: ActivatedRoute
   ) { }
@@ -61,7 +60,7 @@ export class UserEditComponent implements OnInit {
   }
 
   findByIdUser(id: number) {
-   this.temaService.getByIdUser(id).subscribe((resp: User)=>{
+   this.userService.getByIdUser(id).subscribe((resp: User)=>{
     this.user = resp
    })
   }
