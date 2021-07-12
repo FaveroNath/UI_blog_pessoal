@@ -34,8 +34,8 @@ export class TemaEditComponent implements OnInit {
   }
 
   atualizar() {
-    console.log(this.tema)
-    this.temaService.putTema(this.tema,this.id).subscribe((resp: Tema)=>{
+  console.log(this.tema)
+   return this.temaService.putTema(this.tema,this.id).subscribe((resp: Tema)=>{
       this.tema = resp
       alert('Tema atualizado com sucesso!')
       this.router.navigate(['/tema'])
